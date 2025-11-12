@@ -17,15 +17,18 @@ LED_BRIGHTNESS_FILES = [
     "/sys/class/leds/blue:bt/brightness",
 ]
 
+
 def set_led1_color(r, g, b):
     write_led_file(LED_BRIGHTNESS_FILES[0], r)
     write_led_file(LED_BRIGHTNESS_FILES[1], g)
     write_led_file(LED_BRIGHTNESS_FILES[2], b)
 
+
 def set_led2_color(r, g, b):
     write_led_file(LED_BRIGHTNESS_FILES[3], r)
     write_led_file(LED_BRIGHTNESS_FILES[4], g)
     write_led_file(LED_BRIGHTNESS_FILES[5], b)
+
 
 def write_led_file(led_file, color):
     try:
@@ -33,6 +36,7 @@ def write_led_file(led_file, color):
             f.write(f"{color}\n")
     except Exception as e:
         print(f"Error writing to {led_file}: {e}")
+
 
 class Leds:
     @staticmethod
@@ -47,13 +51,14 @@ class Leds:
             # Led 1 and 2 are controlled by Python code directly (MPU), while Led 3 and 4 are controlled via Bridge (MCU)
             match ledid:
                 case 1:
-                    set_led1_color(rgb_color['r'], rgb_color['g'], rgb_color['b'])
+                    set_led1_color(rgb_color["r"], rgb_color["g"], rgb_color["b"])
                 case 2:
-                    set_led2_color(rgb_color['r'], rgb_color['g'], rgb_color['b'])
+                    set_led2_color(rgb_color["r"], rgb_color["g"], rgb_color["b"])
                 case 3 | 4:
-                    Bridge.call("set_led_color", ledid, rgb_color['r'], rgb_color['g'], rgb_color['b'])
+                    Bridge.call("set_led_color", ledid, rgb_color["r"], rgb_color["g"], rgb_color["b"])
 
         except Exception as e:
             Logger(__name__).error(f"LED color set error: {e}")
+
 
 Leds = Leds()
