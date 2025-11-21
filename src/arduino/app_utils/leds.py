@@ -40,4 +40,3 @@ class Leds:
         Leds._write_led_file(Leds._led2_brightness_files[0], r)
         Leds._write_led_file(Leds._led2_brightness_files[1], g)
         Leds._write_led_file(Leds._led2_brightness_files[2], b)
-
