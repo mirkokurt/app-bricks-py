@@ -12,6 +12,7 @@ from .image import *
 from .jsonparser import *
 from .logger import *
 from .slidingwindowbuffer import *
+from .userinput import *
 from .leds import *
 
 __all__ = [
