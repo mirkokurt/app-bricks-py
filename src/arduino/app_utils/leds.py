@@ -9,6 +9,28 @@ logger = Logger(__name__)
 
 
 class Leds:
+    """
+    A utility class for controlling LED colors on Arduino hardware.
+
+    This class provides static methods to control two RGB LEDs by writing to system
+    brightness files. LED1 and LED2 can be controlled directly by the MPU, while
+    LED3 and LED4 require MCU control via Bridge.
+
+    Attributes:
+        _led_ids (list): List of supported LED IDs [1, 2].
+        _led1_brightness_files (list): System file paths for LED1 RGB channels
+            (red:user, green:user, blue:user).
+        _led2_brightness_files (list): System file paths for LED2 RGB channels
+            (red:panic, green:wlan, blue:bt).
+
+    Methods:
+        set_led1_color(r, g, b): Set the RGB color state for LED1.
+        set_led2_color(r, g, b): Set the RGB color state for LED2.
+
+    Example:
+        >>> Leds.set_led1_color(True, False, True)  # LED1 shows magenta
+        >>> Leds.set_led2_color(False, True, False)  # LED2 shows green
+    """
     _led_ids = [1, 2]  # Supported LED IDs (Led 3 and 4 can't be controlled directly by MPU but only by MCU via Bridge)
 
     _led1_brightness_files = [
