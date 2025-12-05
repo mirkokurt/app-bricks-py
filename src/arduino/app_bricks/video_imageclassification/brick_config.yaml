@@ -13,7 +13,7 @@ required_devices:
   - camera
 model: mobilenet-image-classification
 model_configuration_variables:
-  - EI_CLASSIFICATION_MODEL
+  - EI_V_CLASSIFICATION_MODEL
 variables:
 - name: EI_V_CLASSIFICATION_MODEL
   description: Path to the model file
@@ -23,4 +23,7 @@ variables:
   hidden: true
 - name: BIND_ADDRESS
   description: Bind address
-  hidden: true  
+  hidden: true
+- name: VIDEO_DEVICE
+  description: Video device path
+  hidden: true
