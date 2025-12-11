@@ -7,7 +7,7 @@ services:
         max-size: "5m"
         max-file: "2"     
     ports:
-      - "${BIND_ADDRESS:-127.0.0.1}:${BIND_PORT:-8086}:8086"
+      - "${BIND_ADDRESS:-127.0.0.1}:8086:8086"
     volumes:
       - "${APP_HOME:-.}/data/influx-data:/var/lib/influxdb2"
     environment:
