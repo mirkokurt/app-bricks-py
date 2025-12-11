@@ -16,3 +16,4 @@ variables:
 - name: BIND_ADDRESS
   description: External container address
   hidden: true
+  default_value: 127.0.0.1
